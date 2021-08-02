@@ -27,6 +27,7 @@ public class PuzzleFrame extends JFrame {
         this.contentPane = new JPanel() {
             @Override
             protected void paintComponent(Graphics gr) {
+                if (getGui() == null) return;
                 Graphics2D g = (Graphics2D) gr;
                 getGui().render(g);
                 renderParticles(g);
@@ -65,6 +66,7 @@ public class PuzzleFrame extends JFrame {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+                if (getGui() == null) return;
                 if (snow) ((DefaultPuzzleGUI)getGui()).displaySnow();
                 getGui().tickFade();
                 tickParticles();
