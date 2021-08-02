@@ -125,9 +125,11 @@ public class PuzzleFrame extends JFrame {
     }
 
     public void stop() {
-        if (Thread.currentThread() != shutdownThread) Runtime.getRuntime().removeShutdownHook(shutdownThread);
-        setVisible(false);
-        dispose();
+        if (Thread.currentThread() != shutdownThread) {
+            Runtime.getRuntime().removeShutdownHook(shutdownThread);
+            setVisible(false);
+            dispose();
+        }
         timer.cancel();
     }
 
@@ -137,12 +139,12 @@ public class PuzzleFrame extends JFrame {
 
     public void setGUI(PuzzleGUI gui) {
         if (this.gui != null) {
-            contentPane.removeKeyListener(this.gui);
+            removeKeyListener(this.gui);
             contentPane.removeMouseListener(this.gui);
             contentPane.removeMouseMotionListener(this.gui);
         }
         this.gui = gui;
-        contentPane.addKeyListener(this.gui);
+        addKeyListener(this.gui);
         contentPane.addMouseListener(this.gui);
         contentPane.addMouseMotionListener(this.gui);
         repaint();
