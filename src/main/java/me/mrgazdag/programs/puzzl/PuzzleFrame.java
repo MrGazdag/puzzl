@@ -137,14 +137,14 @@ public class PuzzleFrame extends JFrame {
 
     public void setGUI(PuzzleGUI gui) {
         if (this.gui != null) {
-            removeKeyListener(this.gui);
-            removeMouseListener(this.gui);
-            removeMouseMotionListener(this.gui);
+            contentPane.removeKeyListener(this.gui);
+            contentPane.removeMouseListener(this.gui);
+            contentPane.removeMouseMotionListener(this.gui);
         }
         this.gui = gui;
-        addKeyListener(this.gui);
-        addMouseListener(this.gui);
-        addMouseMotionListener(this.gui);
+        contentPane.addKeyListener(this.gui);
+        contentPane.addMouseListener(this.gui);
+        contentPane.addMouseMotionListener(this.gui);
         repaint();
     }
 
